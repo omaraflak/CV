@@ -117,13 +117,12 @@
 
 \newenvironment{event}[4]{
 	{\bf #1} \hfill {#2}
-	\begin{tabularx}{\textwidth}{|@{}p{5.5in} | r@{}|}
-		{#4} & {#3}
-	\end{tabularx}
-
+	\begin{minipage}{5.5in}
+		\smallskip
+		{#4}
+	\end{minipage}
+	\hfill {#3}
 	\vspace{0.5em}
-	
-
 }
 
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
