@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.4in,top=0.5in,right=0.4in,bottom=0.5in]{geometry} % Document margins
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{Roboto}
+
+
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Michel Omar Aflak} % Your name
+\address{163 Avenue de Suffren, 75015, Paris} % Your address
+\address{(+33)630924591 \\ \href{mailto:aflakomar@gmail.com}{aflakomar@gmail.com}} % Your phone number and email
+
+\begin{document}
+
+	%----------------------------------------------------------------------------------------
+	%	EDUCATION SECTION
+	%----------------------------------------------------------------------------------------
+	
+	\begin{rSection}{Education}
+		{\bf Ecole Centrale d'Electronique de Paris}, {\em Engineering School} \hfill {Sept 2017 - \em Present}
+		\\ Graph Theory, Math Analysis
+		
+		{\bf Institut Supérieur d'Electronique de Paris}, {\em Engineering School} \hfill {Sept 2016 - Jul 2017}
+		\\ Control Theory, Calculus \& Linear Algebra
+		
+		{\bf Lycée Janson de Sailly} \hfill {Sept 2013 - Jul 2016}
+		\\ High School diploma, scientific option
+	\end{rSection}
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	WORK EXPERIENCE SECTION
+	%----------------------------------------------------------------------------------------
+	
+	%----------------------------------------------------
+	%	TRIBE
+	%----------------------------------------------------
+	
+	\begin{rSection}{Experience}
+		\begin{event}{Machine Learning Intern - Tribe}{Los Angeles, California.}{Jan 2018 - Feb 2018}{
+			Developed an AI model meant to recognize hand gestures on the Tribe mobile application. Learned to use Keras Data Augmentation and Tensorflow Inference API. \link{https://github.com/omaraflak/gesture_recognition}{Github Repo.}
+		}
+		\end{event}
+		
+		
+		%----------------------------------------------------
+		%	FAST FOOD
+		%----------------------------------------------------
+		
+		\begin{event}{Personal Project - Really Fast-Food}{Paris, France}{Sept 2017 - \em Present}{
+			Simplify the order process in a fast-food using NFC chips. Developed the Android application and the chip protocol for communication. Currently talking with Burger King and exploring the possibilities for a future project. \link{https://github.com/fast-food}{Github Repo.}
+		}
+		\end{event}
+		
+		
+		%----------------------------------------------------
+		%	STROLL PLANNER
+		%----------------------------------------------------
+		
+		\begin{event}{Personal Project - Stroll Planner}{Paris, France}{Dec 2016 - \em Present}{
+			Simplify the organization process of roller strolls events in cities. Developed the Android application. Adopted by several associations in France. \link{https://play.google.com/store/apps/details?id=com.kondev.strollplanner}{PlayStore.}
+		}
+		\end{event}
+	\end{rSection}
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	AWARDS
+	%----------------------------------------------------------------------------------------
+	
+	\begin{rSection}{Awards} \itemsep -2pt
+		\begin{event}{France Engineering Olympiad - Schneider Electric}{Paris, France}{May 2016}{
+				{\em \textquotedblleft Best Scientific Innovation\textquotedblright} award. 6th national place, 2nd regional place. Arrow impact prediction system. \link{https://omar.aflak.me/blocks/thumb-gallery/img/OSI_5.jpg}{Image.}
+			}
+		\end{event}
+		
+		\begin{event}{Paris Engineering Olympiad - GrDF}{Paris, France}{May 2015}{
+				3rd regional place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder). \link{https://omar.aflak.me/blocks/thumb-gallery/img/OSI_3.jpg}{Image.}
+			}
+		\end{event}
+	\end{rSection}
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	SKILLS
+	%----------------------------------------------------------------------------------------
+	
+	\begin{rSection}{Skills}
+		\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+			Programming &  C, \link{https://github.com/omaraflak/simple-neural-network}{C++}, Java, Kotlin, Python, NodeJs, MySQL \\
+			Libraries &  Dagger2, Retrofit, RxAndroid, \link{https://github.com/omaraflak/mnist-keras-android}{Keras}, Tensorflow, \link{https://github.com/omaraflak/graphql-mongodb}{MongoDB, GraphQL} \\
+			Tools &  Git, Shell, Firebase, LaTeX, Make, CMake \\
+			Patterns &  \link{https://github.com/OmarAflak/Kotlin-Dagger-MVP}{MVP}, Clean Architecture \\
+			Machine Learning &  \link{https://medium.com/@omaraflak/neural-network-from-scratch-part-1-theory-7108a4ebfc75}{ANN}, ConvNet, \link{https://gist.github.com/OmarAflak/7f50b6eb782a16d3f4a3340059c291cb}{QLearning}, \link{https://github.com/OmarAflak/QNetwork-Keras}{Reinforcement Learning} \\
+		\end{tabular}
+	\end{rSection}
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	SOCIAL
+	%----------------------------------------------------------------------------------------
+	
+	\begin{rSection}{Meaningful Links}
+		\itab{{\bf \textcolor{black}{\href{https://github.com/omaraflak}{Github}}}} \tab{} \tab{{\bf \textcolor{black}{\href{https://play.google.com/store/apps/developer?id=Omar+Aflak}{PlayStore}}}}
+		
+		\itab{{\bf \textcolor{black}{\href{https://medium.com/@omaraflak}{Medium}}}} \tab{} \tab{{\bf \textcolor{black}{\href{https://causeyourestuck.io/author/omar}{CauseYoureStuck}}}}
+		
+		\itab{{\bf \textcolor{black}{\href{https://stackoverflow.com/users/5552022/omar-aflak}{StackOverflow}}}} \tab{} \tab{{\bf \textcolor{black}{\href{https://www.linkedin.com/in/michel-omar-aflak}{LinkedIn}}}}
+	\end{rSection}
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	EXTRA
+	%----------------------------------------------------------------------------------------
+	
+	\begin{rSection}{Extracurriculars}
+		\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+			Interests &  Blockchain, Cryptocurrency, Science, Design, TED Talks, Marketing \\
+			Other Hobbies &  Skateboarding, Ping-Pong, Drawing \\
+		\end{tabular}
+	\end{rSection}
+
+
+\end{document}
