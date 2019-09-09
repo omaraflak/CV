@@ -64,17 +64,19 @@
 %----------------------------------------------------------------------------------------
 %	PRINT THE HEADING LINES
 %----------------------------------------------------------------------------------------
-
 \let\ori@document=\document
 \renewcommand{\document}{
   \ori@document  % Begin document
   \printname % Print the name specified with \name
-  \@ifundefined{@addressone}{}{ % Print the first address if specified
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{ % Print the second address if specified
-    \printaddress{\@addresstwo}}
-     \@ifundefined{@addressthree}{}{ % Print the third address if specified
-    \printaddress{\@addressthree}}
+  \@ifundefined{@addressone}{}{
+    \printaddress{\@addressone}
+    \@ifundefined{@addresstwo}{}{
+      \printaddress{\@addresstwo}
+      \@ifundefined{@addressthree}{}{
+        \printaddress{\@addressthree}
+      }
+    }
+  }
 }
 
 %----------------------------------------------------------------------------------------
