@@ -128,13 +128,29 @@
 }
 
 %----------------------------------------------------------------------------------------
+% EDUCATION FORMATTING
+%----------------------------------------------------------------------------------------
+
+% defines the school environment for work experiences
+% 5 input argument - school name, school status, from, to, description
+\newenvironment{school}[5]{
+  {\bf #1} \textendash\ {\bf \em #2} \hfill {#3} \textendash\ {#4}
+  \begin{minipage}{5.5in}
+    \smallskip
+    {#5}
+  \end{minipage}
+  \vspace{0.5em}
+}
+
+
+%----------------------------------------------------------------------------------------
 %	EXPERIENCE FORMATTING
 %----------------------------------------------------------------------------------------
 
 % defines the job environment for work experiences
 % 6 input argument - job title, company name, location, from, to, description
 \newenvironment{job}[6]{
-  {\bf #1} \textemdash\ {\bf #2} \hfill {#3}
+  {\bf #1} \textemdash\ {\bf \em #2} \hfill {#3}
   \begin{minipage}{5.5in}
     \smallskip
     {#6}
@@ -144,7 +160,7 @@
 }
 
 %----------------------------------------------------------------------------------------
-% AWARDS FORMATTING
+% AWARD FORMATTING
 %----------------------------------------------------------------------------------------
 
 % defines the award environment for work experiences
@@ -157,22 +173,6 @@
   \end{minipage}
   \hfill {#4}
   \vspace{0.5em}
-}
-
-%----------------------------------------------------------------------------------------
-% WORK & AWARD EXPERIENCE FORMATTING
-%----------------------------------------------------------------------------------------
-
-% defines the event environment : items of rSection
-% 4 input argument - title, location, date, description
-\newenvironment{event}[4]{
-	{\bf #1} \hfill {#2}
-	\begin{minipage}{5.5in}
-		\smallskip
-		{#4}
-	\end{minipage}
-	\hfill {#3}
-	\vspace{0.5em}
 }
 
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
