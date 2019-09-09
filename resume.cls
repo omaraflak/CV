@@ -128,11 +128,43 @@
 }
 
 %----------------------------------------------------------------------------------------
-%	WORK & AWARD EXPERIENCE FORMATTING
+%	EXPERIENCE FORMATTING
+%----------------------------------------------------------------------------------------
+
+% defines the job environment for work experiences
+% 6 input argument - job title, company name, location, from, to, description
+\newenvironment{job}[6]{
+  {\bf #1} \textemdash\ {\bf #2} \hfill {#3}
+  \begin{minipage}{5.5in}
+    \smallskip
+    {#6}
+  \end{minipage}
+  \hfill {#4} \textendash\ {#5}
+  \vspace{0.5em}
+}
+
+%----------------------------------------------------------------------------------------
+% AWARDS FORMATTING
+%----------------------------------------------------------------------------------------
+
+% defines the award environment for work experiences
+% 6 input argument - title, location, city, date, description
+\newenvironment{award}[5]{
+  {\bf #1} \textemdash\ {\bf #2} \hfill {#3}
+  \begin{minipage}{5.5in}
+    \smallskip
+    {#5}
+  \end{minipage}
+  \hfill {#4}
+  \vspace{0.5em}
+}
+
+%----------------------------------------------------------------------------------------
+% WORK & AWARD EXPERIENCE FORMATTING
 %----------------------------------------------------------------------------------------
 
 % defines the event environment : items of rSection
-% 4 input argument - title, place, date, description
+% 4 input argument - title, location, date, description
 \newenvironment{event}[4]{
 	{\bf #1} \hfill {#2}
 	\begin{minipage}{5.5in}
