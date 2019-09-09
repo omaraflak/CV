@@ -1,26 +1,26 @@
-% Create class "resume"
+% create class "resume"
 \ProvidesClass{resume}[Resume]
 
-% Font size and paper type
+% font size and paper type
 \LoadClass[11pt,letterpaper]{article}
 
-% Remove paragraph indentation
+% remove paragraph indentation
 \usepackage[parfill]{parskip}
 
-% Required for boldface (\bf and \bfseries) tabular columns
+% required for boldface (\bf and \bfseries) tabular columns
 \usepackage{array}
 
-% Suppress page numbers
+% suppress page numbers
 \pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
 %	COMMANDS FOR PRINTING NAME
 %----------------------------------------------------------------------------------------
 
-% Sets \@name to empty by default
+% sets \@name to empty by default
 \def \@name {}
 
-% Defines the \name command to set name
+% defines the \name command to set name
 \def \name #1{
   \def \@name {#1}
 }
@@ -37,12 +37,12 @@
 % COMMANDS FOR PRINTING ADDRESSES
 %----------------------------------------------------------------------------------------
 
-% One, two or three address lines can be specified 
+% one, two or three address lines can be specified 
 \let \@addressone \relax
 \let \@addresstwo \relax
 \let \@addressthree \relax
 
-% Set default address separator to a diamond
+% set default address separator to a diamond
 \def \addressSep {$\diamond$}
 
 % \address command can be used to set the first, second, and third address (last 2 optional)
@@ -81,13 +81,16 @@
 %----------------------------------------------------------------------------------------
 %	PRINT THE HEADING LINES
 %----------------------------------------------------------------------------------------
+
+% save old \document command
 \let\ori@document=\document
+% ovewrite document
 \renewcommand{\document}{
-  % Begin document
+  % begin document using old \document command
   \ori@document
-  % Print the name specified with \name
+  % print the name specified with \name
   \printname
-  % Print addresses when defined
+  % print addresses when defined
   \@ifundefined{@addressone}{}{
     \printaddress{\@addressone}
     \@ifundefined{@addresstwo}{}{
@@ -103,14 +106,21 @@
 %	SECTION FORMATTING
 %----------------------------------------------------------------------------------------
 
-% Defines the rSection environment for the large sections within the CV
-\newenvironment{rSection}[1]{ % 1 input argument - section name
+% defines the rSection environment for the large sections within the CV
+% 1 input argument - section name
+\newenvironment{rSection}[1]{
+  % some space
   \sectionskip
-  \MakeUppercase{\bf #1} % Section title
+  % section title
+  \MakeUppercase{\bf #1}
+  % some space
   \sectionlineskip
-  \hrule % Horizontal line
-  \begin{list}{}{ % List for each individual item in the section
-    \setlength{\leftmargin}{1em} % Margin within the section
+  % horizontal line
+  \hrule
+  % list for each individual item in the section
+  \begin{list}{}{
+    % margin within the section
+    \setlength{\leftmargin}{1em}
   }
   \item[]
 }{
@@ -121,6 +131,8 @@
 %	WORK & AWARD EXPERIENCE FORMATTING
 %----------------------------------------------------------------------------------------
 
+% defines the event environment : items of rSection
+% 4 input argument - title, place, date, description
 \newenvironment{event}[4]{
 	{\bf #1} \hfill {#2}
 	\begin{minipage}{5.5in}
