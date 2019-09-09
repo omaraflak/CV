@@ -1,32 +1,49 @@
-
+% Create class "resume"
 \ProvidesClass{resume}[Resume]
 
-\LoadClass[11pt,letterpaper]{article} % Font size and paper type
+% Font size and paper type
+\LoadClass[11pt,letterpaper]{article}
 
-\usepackage[parfill]{parskip} % Remove paragraph indentation
-\usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
-\usepackage{ifthen} % Required for ifthenelse statements
-\usepackage{tabularx}
+% Remove paragraph indentation
+\usepackage[parfill]{parskip}
 
-\pagestyle{empty} % Suppress page numbers
+% Required for boldface (\bf and \bfseries) tabular columns
+\usepackage{array}
+
+% Suppress page numbers
+\pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
-%	HEADINGS COMMANDS: Commands for printing name and address
+%	COMMANDS FOR PRINTING NAME
 %----------------------------------------------------------------------------------------
 
-\def \name#1{\def\@name{#1}} % Defines the \name command to set name
-\def \@name {} % Sets \@name to empty by default
+% Sets \@name to empty by default
+\def \@name {}
 
-\def \addressSep {$\diamond$} % Set default address separator to a diamond
-
-\newcommand{\link}[2]{
-	\textcolor{brown}{{\href{#1}{#2}}}
+% Defines the \name command to set name
+\def \name #1{
+  \def \@name {#1}
 }
+
+% \printname is used to print the name as a page header
+\def \printname {
+  \begingroup
+    \hfil{\MakeUppercase{\namesize \@name}}\hfil
+    \nameskip\break
+  \endgroup
+}
+
+%----------------------------------------------------------------------------------------
+% COMMANDS FOR PRINTING ADDRESSES
+%----------------------------------------------------------------------------------------
 
 % One, two or three address lines can be specified 
 \let \@addressone \relax
 \let \@addresstwo \relax
 \let \@addressthree \relax
+
+% Set default address separator to a diamond
+\def \addressSep {$\diamond$}
 
 % \address command can be used to set the first, second, and third address (last 2 optional)
 \def \address #1{
@@ -53,12 +70,12 @@
   \addressskip
 }
 
-% \printname is used to print the name as a page header
-\def \printname {
-  \begingroup
-    \hfil{\MakeUppercase{\namesize \@name}}\hfil
-    \nameskip\break
-  \endgroup
+%----------------------------------------------------------------------------------------
+% COMMAND FOR PRINTING LINKS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\link}[2]{
+  \textcolor{brown}{\href{#1}{#2}}
 }
 
 %----------------------------------------------------------------------------------------
@@ -66,8 +83,11 @@
 %----------------------------------------------------------------------------------------
 \let\ori@document=\document
 \renewcommand{\document}{
-  \ori@document  % Begin document
-  \printname % Print the name specified with \name
+  % Begin document
+  \ori@document
+  % Print the name specified with \name
+  \printname
+  % Print addresses when defined
   \@ifundefined{@addressone}{}{
     \printaddress{\@addressone}
     \@ifundefined{@addresstwo}{}{
