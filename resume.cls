@@ -2,7 +2,7 @@
 \ProvidesClass{resume}[Resume]
 
 % font size and paper type
-\LoadClass[11pt,letterpaper]{article}
+\LoadClass[11pt, a4paper]{article}
 
 % remove paragraph indentation
 \usepackage[parfill]{parskip}
