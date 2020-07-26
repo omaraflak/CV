@@ -7,6 +7,8 @@
 % remove paragraph indentation
 \usepackage[parfill]{parskip}
 
+\usepackage{xcolor}
+
 % required for boldface (\bf and \bfseries) tabular columns
 \usepackage{array}
 
@@ -37,7 +39,7 @@
 % COMMANDS FOR PRINTING ADDRESSES
 %----------------------------------------------------------------------------------------
 
-% one, two or three address lines can be specified 
+% one, two or three address lines can be specified
 \let \@addressone \relax
 \let \@addresstwo \relax
 \let \@addressthree \relax
@@ -71,11 +73,22 @@
 }
 
 %----------------------------------------------------------------------------------------
+% CUSTOM COLORS
+%----------------------------------------------------------------------------------------
+
+\definecolor{visible}{rgb}{0.961, 0, 0.341}
+\definecolor{hint}{rgb}{0.129, 0.129, 0.129}
+
+%----------------------------------------------------------------------------------------
 % COMMAND FOR PRINTING LINKS
 %----------------------------------------------------------------------------------------
 
 \newcommand{\link}[2]{
   \textcolor{brown}{\href{#1}{#2}}
+}
+
+\newcommand{\boldlink}[2]{
+  \textbf{\textcolor{visible}{\href{#1}{#2}}}
 }
 
 %----------------------------------------------------------------------------------------
@@ -128,34 +141,32 @@
 }
 
 %----------------------------------------------------------------------------------------
-% EDUCATION FORMATTING
+%	EXPERIENCE FORMATTING
 %----------------------------------------------------------------------------------------
 
-% defines the school environment for work experiences
-% 5 input argument - school name, school status, from, to, description
-\newenvironment{school}[5]{
-  {\bf #1} \textendash\ {\bf \em #2} \hfill {#3} \textendash\ {#4}
-  \begin{minipage}{5.5in}
+% 6 input argument - company name, location, job title, from, to, description
+\newenvironment{job}[6]{
+  {\bf #1}, {#2} \textemdash\ \textit{#3} \\
+  {\footnotesize \textcolor{hint}{{#4} \textendash\ {#5}}} \\
+  \begin{minipage}{6.5in}
     \smallskip
-    {#5}
+    {#6}
   \end{minipage}
   \vspace{0.5em}
 }
 
-
 %----------------------------------------------------------------------------------------
-%	EXPERIENCE FORMATTING
+% EDUCATION FORMATTING
 %----------------------------------------------------------------------------------------
 
-% defines the job environment for work experiences
-% 6 input argument - job title, company name, location, from, to, description
-\newenvironment{job}[6]{
-  {\bf #1} \textemdash\ {\bf \em #2} \hfill {#3}
-  \begin{minipage}{5.5in}
+% 5 input argument - school name, school type, from, to, description
+\newenvironment{school}[5]{
+  {\bf #1} \textendash\ \textit{#2} \\
+  {\footnotesize \textcolor{hint}{{#3} \textendash\ {#4}}} \\
+  \begin{minipage}{6.5in}
     \smallskip
-    {#6}
+    {#5}
   \end{minipage}
-  \hfill {#4} \textendash\ {#5}
   \vspace{0.5em}
 }
 
@@ -163,15 +174,14 @@
 % AWARD FORMATTING
 %----------------------------------------------------------------------------------------
 
-% defines the award environment for work experiences
 % 6 input argument - title, location, city, date, description
 \newenvironment{award}[5]{
-  {\bf #1} \textemdash\ {\bf #2} \hfill {#3}
-  \begin{minipage}{5.5in}
+  {\bf #1} \textemdash\ \textit{#2, #3} \\
+  {\footnotesize \textcolor{hint}{{#4}}} \\
+  \begin{minipage}{6.5in}
     \smallskip
     {#5}
   \end{minipage}
-  \hfill {#4}
   \vspace{0.5em}
 }
 
@@ -180,12 +190,12 @@
 %----------------------------------------------------------------------------------------
 
 % Size of the name at the top of the document
-\def \namesize {\huge} 
+\def \namesize {\huge}
 % The space between the two address (or phone/email) lines
-\def \addressskip {\smallskip} 
-% The space above the horizontal line for each section 
-\def \sectionlineskip {\medskip} 
+\def \addressskip {\smallskip}
+% The space above the horizontal line for each section
+\def \sectionlineskip {\medskip}
 % The space after your name at the top
-\def \nameskip {\bigskip} 
+\def \nameskip {\bigskip}
 % The space after the heading section
-\def \sectionskip {\bigskip} 
+\def \sectionskip {\bigskip}
