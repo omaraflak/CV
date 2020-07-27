@@ -87,7 +87,7 @@
   \textcolor{brown}{\href{#1}{#2}}
 }
 
-\newcommand{\boldlink}[2]{
+\newcommand{\importantlink}[2]{
   \textbf{\textcolor{visible}{\href{#1}{#2}}}
 }
 
@@ -181,6 +181,21 @@
   \begin{minipage}{6.5in}
     \smallskip
     {#5}
+  \end{minipage}
+  \vspace{0.5em}
+}
+
+%----------------------------------------------------------------------------------------
+% PROJECTS FORMATTING
+%----------------------------------------------------------------------------------------
+
+% 4 input argument - title, from, to, description
+\newenvironment{project}[4]{
+  {\bf #1} \\
+  {\footnotesize \textcolor{hint}{#2 \textemdash\ #3}} \\
+  \begin{minipage}{6.5in}
+    \smallskip
+    {#4}
   \end{minipage}
   \vspace{0.5em}
 }
