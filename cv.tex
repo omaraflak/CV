@@ -11,43 +11,48 @@
 \newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 
-
 \name{Michel Omar Aflak}
-\address{CS Master Student}
+\address{Software Engineer - Master of Computer Science}
 \address{(+33)630924591 \\ \href{mailto:aflakomar@gmail.com}{aflakomar@gmail.com}}
-\address{\importantlink{https://github.com/omaraflak}{github.com/omaraflak} \\ \importantlink{https://medium.com/@omaraflak}{medium.com/@omaraflak}}
+\address{\importantlink{https://github.com/omaraflak}{github.com/omaraflak} \\ \importantlink{https://medium.com/@omaraflak}{medium.com/@omaraflak} \\ \importantlink{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{youtube.com}}
 
 \begin{document}
-
 	%----------------------------------------------------------------------------------------
 	%	WORK EXPERIENCE SECTION
 	%----------------------------------------------------------------------------------------
 	\begin{rSection}{Experience}
-
-		%----------------------------------------------------
-		%	TWITTER
-		%----------------------------------------------------
-		\begin{job}{Twitter}{London}{Software Engineer Intern}{Jun 2019}{Sept 2019}{
-            \begin{itemize}
-                \item Worked with Media Client Infrastructure team. Improved video quality on high speed networks by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an increase in ads revenue by +0.56\%, \# of retweets by +0.74\%, \# of likes by +0.25\%.
-            \end{itemize}
-		}
-		\end{job}
-
-
-
-
         %----------------------------------------------------
-        %	ZENLY
+        %	CRITEO
         %----------------------------------------------------
-        \begin{job}{Zenly (Snapchat)}{Paris}{Software Engineer Intern}{April 2020}{Aug 2020}{
+        \begin{job}{Criteo}{Paris}{Software Engineer Intern}{Feb 2021}{\em{Present}}{
             \begin{itemize}
-                \item Developed a graphic tool library on Android allowing to draw, animate, write text and play GIFs on top of images and videos, including an undo/redo framework, with a focus on memory management.
-                \item Improved video encoding settings.
+                \item Developed a distributed and optimized pipeline in PySpark from scratch that transforms data before it's used for training ML models. Improved processing time, code simplicity, and allowed to replace completely old Scala codebase with Python.
+                \item Developed a highly optimized C\# code that transforms data for realtime inference. Improved processing time, code simplicity.
+                \item Wrote a Python wrapper around XGBoost for Spark.
             \end{itemize}
         }
         \end{job}
 
+        %----------------------------------------------------
+        %	ZENLY
+        %----------------------------------------------------
+        \begin{job}{Zenly - Snapchat}{Paris}{Software Engineer Intern}{April 2020}{Aug 2020}{
+            \begin{itemize}
+                \item Developed a highly customizable and optimized graphical library on Android allowing to draw, animate, write text and play GIFs, on top of images and videos, including an undo/redo framework, with a focus on memory management.
+                \item Improved H264 encoding settings.
+            \end{itemize}
+        }
+        \end{job}
+
+        %----------------------------------------------------
+        %	TWITTER
+        %----------------------------------------------------
+        \begin{job}{Twitter}{London}{Software Engineer Intern}{Jun 2019}{Sept 2019}{
+            \begin{itemize}
+                \item Worked with Media Client Infrastructure team. Improved video quality on high speed networks by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an increase in ads revenue by +0.56\%, \# of retweets by +0.74\%, \# of likes by +0.25\%.
+            \end{itemize}
+        }
+        \end{job}
 
 		%----------------------------------------------------
 		%	RANDOM COFFEE
@@ -71,13 +76,11 @@
 		\end{job}
 	\end{rSection}
 
-
-
     %----------------------------------------------------------------------------------------
     %	EDUCATION SECTION
     %----------------------------------------------------------------------------------------
     \begin{rSection}{Education}
-        \begin{school}{École Centrale d'Électronique de Paris}{Engineering School}{Sept 2017}{\em Present}{
+        \begin{school}{École Centrale d'Électronique de Paris}{Engineering School}{Sept 2017}{June 2021}{
             Computer Science, Data Science, Big Data, Mathematics
         }
         \end{school}
@@ -96,49 +99,41 @@
     %----------------------------------------------------------------------------------------
     %	PROJECT SECTION
     %----------------------------------------------------------------------------------------
-    \begin{rSection}{Some Personal Projects}
-
-
-        \begin{project}{Machine Learning Library from scratch}{2020}{Now}{
-			Four years ago, I decided to learn AI and more specifically neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work both mathematically and programmatically. I developed a machine learning library akin Keras \textbf{\link{https://github.com/omaraflak/my-neural-nets}{on GitHub}}. I wrote \textbf{\link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{an article on Medium}} that got published in Towards Data Science, and gave a talk/lesson within the organization School Of AI in Paris.
-	}
+    \begin{rSection}{Some Notable Projects}
+        \begin{project}{YouTube Channel}{2021}{
+            After writing countless articles, I decided to change my medium of expression. I published my first YouTube video February 2021, where I show (using beautiful animations made in Python) how to create a machine learning library akin Keras from scratch. You can watch the video here: \link{https://youtu.be/pauPCy\_s0Ok}{https://youtu.be/pauPCy\_s0Ok}.
+        }
         \end{project}
 
+        \begin{project}{King of Ether}{2020}{
+            King of Ether is an existing game that I reimplemented on the blockhain of Ethereum using Solidity smart contracts. The game is a Ponzi scheme in itself. To start the game, a player has to send ETH to the contract and becomes the so called king. Then, every person that wants to claim the throne must send 30\% more ETH to the contract and will become the new king. When that happens, the ETH of the new king are transfered to the account of the old king. And so on... If nobody claims the throne for 7 days in a row, the game ends, and the current king is dethroned by some mystical power... \link{https://kingofether.github.io}{https://kingofether.github.io}.
+        }
+        \end{project}
 
-	    \begin{project}{Leaf}{Sept 2019}{April 2020}{
-            Leaf is a device with radio capabilities that can be plugged directly in a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to 3km between each node) without any internet connection. This personal project was POC to demonstrate possible alternatives for private decentralized communications.
+	    \begin{project}{Leaf}{2019}{
+            Leaf is a device with radio capabilities that can be plugged directly in a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to 3km between each node) without any internet connection. This personal project was a proof of concept to demonstrate possible alternatives for private decentralized communications. \link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project — Natural disaster communication system}.
+        }
+        \end{project}
+
+        \begin{project}{Machine Learning Library from scratch}{2018}{
+            Four years ago, I decided to learn AI and more specifically neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work both mathematically and programmatically. I developed a machine learning library akin Keras \textbf{\link{https://github.com/omaraflak/my-neural-nets}{on GitHub}}. I wrote \link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{an article on Medium} that got published in Towards Data Science, and gave a talk/lesson within the organization School Of AI in Paris.
         }
         \end{project}
     \end{rSection}
 
-
-
-
-
 	%----------------------------------------------------------------------------------------
 	%	AWARDS
 	%----------------------------------------------------------------------------------------
-	\begin{rSection}{Awards} \itemsep -2pt
+	\begin{rSection}{Awards}
 		\begin{award}{France Engineering Olympiad}{Schneider Electric}{Paris}{May 2016}{
-				{\em \textquotedblleft Best Scientific Innovation\textquotedblright} award. 6th national place, 2nd regional place. Arrow impact prediction system.
-			}
+			{\em \textquotedblleft Best Scientific Innovation\textquotedblright} award. 6th national place, 2nd regional place. Arrow impact prediction system.
+		}
 		\end{award}
 
 		\begin{award}{Paris Engineering Olympiad}{GRDF}{Paris}{May 2015}{
-				3rd regional place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder).
-			}
+			3rd regional place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder).
+		}
 		\end{award}
-	\end{rSection}
-
-	%----------------------------------------------------------------------------------------
-	%	Skills
-	%----------------------------------------------------------------------------------------
-	\begin{rSection}{Skills}
-		\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-			Programming &  C++, Java, Kotlin, Python, NodeJs, Javascript \\
-			Tools &  Git, Shell, Firebase, LaTeX, Make, CI, Docker \\
-			General &  Mathematics, Machine Learning
-		\end{tabular}
 	\end{rSection}
 
 	%----------------------------------------------------------------------------------------

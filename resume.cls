@@ -83,13 +83,8 @@
 % COMMAND FOR PRINTING LINKS
 %----------------------------------------------------------------------------------------
 
-\newcommand{\link}[2]{
-  \textcolor{brown}{\href{#1}{#2}}
-}
-
-\newcommand{\importantlink}[2]{
-  \textbf{\textcolor{visible}{\href{#1}{#2}}}
-}
+\newcommand{\link}[2]{\textbf{\textcolor{brown}{\href{#1}{#2}}}}
+\newcommand{\importantlink}[2]{\textbf{\textcolor{visible}{\href{#1}{#2}}}}
 
 %----------------------------------------------------------------------------------------
 %	PRINT THE HEADING LINES
@@ -189,13 +184,12 @@
 % PROJECTS FORMATTING
 %----------------------------------------------------------------------------------------
 
-% 4 input argument - title, from, to, description
-\newenvironment{project}[4]{
-  {\bf #1} \\
-  {\footnotesize \textcolor{hint}{#2 \textemdash\ #3}} \\
+% 3 input argument - title, date, description
+\newenvironment{project}[3]{
+  {\bf #1} \textendash\ {\footnotesize \textcolor{hint}{{#2}}} \\
   \begin{minipage}{6.5in}
     \smallskip
-    {#4}
+    {#3}
   \end{minipage}
   \vspace{0.5em}
 }
