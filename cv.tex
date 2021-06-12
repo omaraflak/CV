@@ -1,148 +1,166 @@
-% use the custom resume.cls style
-\documentclass{resume}
-
-% document margins
-\usepackage[left=0.4in,top=0.5in,right=0.4in,bottom=0.5in]{geometry}
-\usepackage{graphicx}
-\usepackage{hyperref}
+\documentclass[11pt, a4paper]{article}
+\usepackage[left=0.6in,top=0.4in,right=0.6in,bottom=0.4in]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{linegoal}
+\usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{array}
 
-% commands
-\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
-\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\pagestyle{empty}
+\setmainfont{Garamond Classico}
 
-\name{Michel Omar Aflak}
-\address{Software Engineer - Master of Computer Science}
-\address{(+33)630924591 \\ \href{mailto:aflakomar@gmail.com}{aflakomar@gmail.com}}
-\address{\importantlink{https://github.com/omaraflak}{github.com/omaraflak} \\ \importantlink{https://medium.com/@omaraflak}{medium.com/@omaraflak} \\ \importantlink{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{youtube.com}}
+\newcommand{\drawline}{\leavevmode\leaders\hrule height 1pt\hfill\kern 0pt}
+\newcommand{\link}[2]{\underline{\textcolor{black}{\href{#1}{#2}}}}
+\newcommand{\newsection}[1]{
+    \drawline
+    \break
+    \onehalfspacing
+    \begin{minipage}[t]{120pt}
+        \addfontfeature{LetterSpace=15}
+        \footnotesize{\MakeUppercase{#1}}
+        \addfontfeature{LetterSpace=0}
+    \end{minipage}
+}
+\newcommand{\internship}[6]{
+    \begin{minipage}[t]{120pt}
+        \footnotesize{#1 \textemdash\ #2}
+    \end{minipage}
+    \begin{minipage}[t]{\linegoal}
+        \textbf{\normalsize{#3 \textemdash\ #4}}
+        \hfill
+        \footnotesize{#5}
+        \vspace{0.5em}
+        \begin{flushleft}
+            \footnotesize{#6}
+        \end{flushleft}
+    \end{minipage}
+}
+\newcommand{\project}[3]{
+    \begin{minipage}[t]{120pt}
+        \footnotesize{#1}
+    \end{minipage}
+    \begin{minipage}[t]{\linegoal}
+        \textbf{\normalsize{#2}}
+        \vspace{0.5em}
+        \begin{flushleft}
+            \footnotesize{#3}
+        \end{flushleft}
+    \end{minipage}
+}
+\newcommand{\award}[5]{
+    \begin{minipage}[t]{120pt}
+        \footnotesize{#1}
+    \end{minipage}
+    \begin{minipage}[t]{\linegoal}
+        \textbf{\normalsize{#2, #3}}
+        \hfill
+        \footnotesize{#4}
+        \vspace{0.5em}
+        \begin{flushleft}
+            \footnotesize{#5}
+        \end{flushleft}
+    \end{minipage}
+}
+\newcommand{\education}[4]{
+    \begin{minipage}[t]{120pt}
+        \footnotesize{#1 \textemdash\ #2}
+    \end{minipage}
+    \begin{minipage}[t]{\linegoal}
+        \textbf{\normalsize{#3}}
+        \hfill
+        \footnotesize{#4}
+    \end{minipage}
+}
 
 \begin{document}
-	%----------------------------------------------------------------------------------------
-	%	WORK EXPERIENCE SECTION
-	%----------------------------------------------------------------------------------------
-	\begin{rSection}{Experience}
-        %----------------------------------------------------
-        %	CRITEO
-        %----------------------------------------------------
-        \begin{job}{Criteo}{Paris}{Software Engineer Intern}{Feb 2021}{\em{Present}}{
-            \begin{itemize}
-                \item Developed a distributed and optimized pipeline in PySpark from scratch that transforms multi-terabytes of data, trains ML models, and packages everything for production use. Improved processing time, memory footprint, code simplicity, and completely replaced old Scala codebase with Python. My code allowed to undertake new ML studies very quickly that would have been too time consuming to try previously.
-                \item Developed a highly optimized C\# code that transforms data for realtime inference. Reduced overall prediction time by -1.43\%.
-            \end{itemize}
-        }
-        \end{job}
+    \begingroup
+        \centerline{\Large{\textbf{Michel Omar Aflak, Software Engineer}}}
+        \doublespacing
+        \centerline{\small{(+33)630924591, aflakomar@gmail.com}}
+    \endgroup
 
-        %----------------------------------------------------
-        %	ZENLY
-        %----------------------------------------------------
-        \begin{job}{Zenly - Snapchat}{Paris}{Software Engineer Intern}{April 2020}{Aug 2020}{
-            \begin{itemize}
-                \item Developed a highly customizable and optimized graphical library on Android allowing to draw, animate, write text and play GIFs, on top of images and videos, including an undo/redo framework, with a focus on memory management.
-                \item Improved H264 encoding settings.
-            \end{itemize}
-        }
-        \end{job}
+    \newsection{Links}
+    \begin{minipage}[t]{\linegoal}
+        \small{\link{https://github.com/omaraflak}{GitHub}},
+        \small{\link{https://medium.com/@omaraflak}{Medium}},
+        \small{\link{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{YouTube}},
+        \small{\link{https://stackoverflow.com/users/5552022/omar-aflak}{StackOverflow}}
+    \end{minipage}
 
-        %----------------------------------------------------
-        %	TWITTER
-        %----------------------------------------------------
-        \begin{job}{Twitter}{London}{Software Engineer Intern}{Jun 2019}{Sept 2019}{
-            \begin{itemize}
-                \item Worked with Media Client Infrastructure team. Improved video quality on high speed networks by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an increase in ads revenue by +0.56\%, \# of retweets by +0.74\%, \# of likes by +0.25\%.
-            \end{itemize}
-        }
-        \end{job}
+    \newsection{Internships}
+    \break
+    \internship{Feb 2021}{Aug 2021}{Criteo}{Software Engineer}{Paris}{
+        \begin{itemize}[noitemsep]
+            \item Developed a distributed and optimized pipeline in PySpark from scratch that transforms multi-terabytes of data, trains ML models, and packages everything for production use. Improved processing time, memory footprint, code simplicity, and completely replaced old Scala codebase with Python.
+            \item Developed a highly optimized C\# code that transforms data for realtime inference. Reduced overall prediction time by -1.43\%.
+        \end{itemize}
+    }
+    \break
+    \internship{Apr 2020}{Aug 2020}{Zenly}{Software Engineer}{Paris}{
+        \begin{itemize}[noitemsep]
+            \item Developed a highly customizable and optimized graphical library on Android allowing to draw, animate, write text and play GIFs, on top of images and videos, including an undo/redo framework, with a focus on memory management.
+            \item Improved H264 encoding settings.
+        \end{itemize}
+    }
+    \break
+    \internship{Jun 2019}{Sep 2019}{Twitter}{Software Engineer}{London}{
+        Worked with Media Client Infrastructure team. Improved video quality on high speed networks by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an increase in ads revenue by +0.56\%, \# of retweets by +0.74\%, \# of likes by +0.25\%.
+    }
+    \break
+    \internship{Dec 2018}{Feb 2018}{RandomCoffee}{Software Engineer}{Paris}{
+        \begin{itemize}[noitemsep]
+            \item \link{https://www.random-coffee.com}{RandomCoffee} get employees in a company to meet each other based on their preferences. Generalized the way of expressing matching rules.
+            \item Developed a matching algorithm (derived version of K-Medoid) that can match any number of people together instead of only 2 previously, given a set of constraints.
+        \end{itemize}
+    }
+    \break
+    \internship{Jan 2018}{Feb 2018}{Tribe}{Machine Learning}{Los Angeles}{
+        Tribe is a live multiplayer gaming platform that raised \$6.5M from Sequoia Capital, Kleiner Perkins, and others. Developed a mobile embedded machine learning model able to recognize hand gestures.
+    }
 
-		%----------------------------------------------------
-		%	RANDOM COFFEE
-		%----------------------------------------------------
-		\begin{job}{RandomCoffee}{STATION F Paris}{Software Engineer Intern}{Dec 2018}{Feb 2019}{
-            \begin{itemize}
-                \item \link{https://www.random-coffee.com/}{RandomCoffee} get employees in a company to meet each other based on their preferences. Generalized the way of expressing matching rules.
-                \item Developed a matching algorithm (derived version of K-Medoid) that can match any number of people together instead of only 2 previously, given a set of constraints.
-            \end{itemize}
-		}
-		\end{job}
+    \newsection{Notable Projects}
+    \break
+    \project{2021}{YouTube Channel}{
+        After writing countless articles, I decided to change my medium of expression. I started a YouTube channel February 2021 where I program mathematical concepts, such as neural networks, from scratch. \link{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{The Independent Code}.
+    }
+    \break
+    \project{2020}{King Of Ether}{
+        King of Ether is an existing game that I reimplemented on the blockhain of Ethereum using Solidity smart contracts. The game is a Ponzi scheme in itself. To start the game, a player has to send ETH to the contract and becomes the so called king. Then, every person that wants to claim the throne must send 30\% more ETH to the contract and will become the new king. When that happens, the ETH of the new king are transfered to the account of the old king. And so on... If nobody claims the throne for 7 days in a row, the game ends, and the current king is dethroned by some mystical power... \link{https://kingofether.github.io}{https://kingofether.github.io}.
+    }
+    \break
+    \project{2019}{Leaf}{
+        Leaf is a device with radio capabilities that can be plugged directly in a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to 3km between each node) without any internet connection. This personal project was a proof of concept to demonstrate possible alternatives for private decentralized communications. \link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project — Natural disaster communication system}.
+    }
+    \break
+    \project{2018}{Machine Learning Library from scratch}{
+        Four years ago, I decided to learn AI and more specifically neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work both mathematically and programmatically. I developed a machine learning library akin Keras \link{https://github.com/omaraflak/my-neural-nets}{on GitHub}. I wrote an article \link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{on Medium} that got published in \textit{Towards Data Science}, and gave a talk/lesson within the organization \textit{School Of AI} in Paris.
+    }
 
-		%----------------------------------------------------
-		%	TRIBE
-		%----------------------------------------------------
-		\begin{job}{Tribe}{Los Angeles}{Machine Learning Intern}{Jan 2018}{Feb 2018}{
-            \begin{itemize}
-                \item Tribe is a live multiplayer gaming platform that raised \$6.5M from Sequoia Capital, Kleiner Perkins, and others. Developed a mobile embedded machine learning model able to recognize hand gestures.
-            \end{itemize}
-		}
-		\end{job}
-	\end{rSection}
+    \newsection{Awards}
+    \break
+    \award{May 2016}{Engineering Olympiad}{Schneider Electric}{Paris}{
+        \textit{\textquotedblleft Best Scientific Innovation\textquotedblright} award. \textbf{6th national} place, \textbf{2nd regional} place. Arrow impact prediction system.
+    }
+    \break
+    \award{May 2015}{Engineering Olympiad}{GRDF}{Paris}{
+        \textbf{3rd regional} place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder).
+    }
 
-    %----------------------------------------------------------------------------------------
-    %	PROJECT SECTION
-    %----------------------------------------------------------------------------------------
-    \begin{rSection}{Some Notable Projects}
-        \begin{project}{YouTube Channel}{2021}{
-            After writing countless articles, I decided to change my medium of expression. I started a YouTube channel February 2021 where I program mathematical concepts, such as neural networks, from scratch. \link{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{The Independent Code}.
-        }
-        \end{project}
+    \newsection{Education}
+    \break
+    \education{Sept 2017}{June 2021}{École Centrale d'Électronique de Paris}{Paris}
+    \break
+    \education{Sept 2018}{Dec 2018}{INSEEC}{London}
+    \break
+    \education{Sept 2016}{Jul 2017}{Institut Supérieur d'Electronique de Paris}{Paris}
 
-        \begin{project}{King of Ether}{2020}{
-            King of Ether is an existing game that I reimplemented on the blockhain of Ethereum using Solidity smart contracts. The game is a Ponzi scheme in itself. To start the game, a player has to send ETH to the contract and becomes the so called king. Then, every person that wants to claim the throne must send 30\% more ETH to the contract and will become the new king. When that happens, the ETH of the new king are transfered to the account of the old king. And so on... If nobody claims the throne for 7 days in a row, the game ends, and the current king is dethroned by some mystical power... \link{https://kingofether.github.io}{https://kingofether.github.io}.
-        }
-        \end{project}
-
-	    \begin{project}{Leaf}{2019}{
-            Leaf is a device with radio capabilities that can be plugged directly in a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to 3km between each node) without any internet connection. This personal project was a proof of concept to demonstrate possible alternatives for private decentralized communications. \link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project — Natural disaster communication system}.
-        }
-        \end{project}
-
-        \begin{project}{Machine Learning Library from scratch}{2018}{
-            Four years ago, I decided to learn AI and more specifically neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work both mathematically and programmatically. I developed a machine learning library akin Keras \textbf{\link{https://github.com/omaraflak/my-neural-nets}{on GitHub}}. I wrote \link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{an article on Medium} that got published in Towards Data Science, and gave a talk/lesson within the organization School Of AI in Paris.
-        }
-        \end{project}
-    \end{rSection}
-
-	%----------------------------------------------------------------------------------------
-	%	AWARDS
-	%----------------------------------------------------------------------------------------
-	\begin{rSection}{Awards}
-		\begin{award}{France Engineering Olympiad}{Schneider Electric}{Paris}{May 2016}{
-			{\em \textquotedblleft Best Scientific Innovation\textquotedblright} award. 6th national place, 2nd regional place. Arrow impact prediction system.
-		}
-		\end{award}
-
-		\begin{award}{Paris Engineering Olympiad}{GRDF}{Paris}{May 2015}{
-			3rd regional place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder).
-		}
-		\end{award}
-	\end{rSection}
-
-    %----------------------------------------------------------------------------------------
-    %	EDUCATION SECTION
-    %----------------------------------------------------------------------------------------
-    \begin{rSection}{Education}
-        \begin{school}{École Centrale d'Électronique de Paris}{Engineering School}{Sept 2017}{June 2021}{
-            Computer Science, Data Science, Big Data, Mathematics
-        }
-        \end{school}
-
-        \begin{school}{INSEEC London}{Engineering School}{Sept 2018}{Dec 2018}{
-            Image Processing, NLP, Blockchain
-        }
-        \end{school}
-
-        \begin{school}{Institut Supérieur d'Electronique de Paris}{Engineering School}{Sept 2016}{Jul 2017}{
-            Control Theory, Calculus \& Linear Algebra
-        }
-        \end{school}
-    \end{rSection}
-
-	%----------------------------------------------------------------------------------------
-	%	LANGUAGES
-	%----------------------------------------------------------------------------------------
-	\begin{rSection}{Languages}
-		\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-			French &  Fluent \\
-			English &  Fluent \\
-			Arabic &  Fluent \\
-		\end{tabular}
-	\end{rSection}
+    \newsection{Languages}
+    \begin{minipage}[t]{\linegoal}
+        \small{\textbf{French}}: Native \qquad
+        \small{\textbf{English}}: Highly proficient \qquad
+        \small{\textbf{Arabic}}: Native
+    \end{minipage}
 \end{document}
