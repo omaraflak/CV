@@ -106,46 +106,48 @@
     \newsection{Links}
     \begingroup
         \begin{minipage}[t]{\linegoal}
-            \footnotesize{\link{https://github.com/omaraflak}{GitHub}}: 110+ public repositories \\
+            \footnotesize{\link{https://github.com/omaraflak}{GitHub}}: 100+ public repositories \\
             \footnotesize{\link{https://medium.com/@omaraflak}{Medium}}: 12 articles, many in \textit{Towards Data Science} \\
-            \footnotesize{\link{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{YouTube}}: 4 videos, Machine Learning \\
+            \footnotesize{\link{https://www.youtube.com/@independentcode}{YouTube}}: 4 videos, Machine Learning \\
             \footnotesize{\link{https://stackoverflow.com/users/5552022/omar-aflak}{StackOverflow}}: 130+ answers
         \end{minipage}
     \endgroup
 
     \newsection{Experience}
     \newsectionspace
-    \experience{Dec 2021}{\textit{present}}{Google}{Software Engineer}{London}{
-        Launched the \link{https://play.google.com/console/about/deeplinks}{Deep Links} page in Play Console. Developed several data pipelines, that are time sensitive and critical to the project; those pipelines process data coming from 500M Android devices, or 26B messages daily. Project led to 12\% of App Links domains being fixed.
-        Filled a stream of revenue by \$xxM. Designed and implemented end to end patching feature for Android Deeplinks.
+    \experience{Dec 2021}{\textit{present}}{Google}{Software Engineer}{London, UK}{
+        \begin{itemize}
+            \item Launched the \link{https://play.google.com/console/about/deeplinks}{Deep Links} page in Play Console. Developed several critical, time sensitive data pipelines responsible for processing data coming from 1.4B Android devices daily, or xxB messages daily. Project led to the fix of ~20\% of App Links domains. Increased a stream of revenue by \$xxM.
+            \item Designed and implemented end-to-end patching feature for Android Deep Links, involving: code modifications in GmsCore, implementation of a storage solution, development of data pipelines, creation of APIs, and the design of a web UI in Play Console.
+        \end{itemize}
     }
     \newsectionspace
-    \experience{Feb 2021}{Aug 2021}{Criteo}{Software Engineer, Data}{Paris}{
+    \experience{Feb 2021}{Aug 2021}{Criteo}{Software Engineer, Data}{Paris, FR}{
         Redesigned from scratch, in PySpark, the pipeline that prepares data for training Criteo's machine learning models for Ads. The pipeline handles multi-terabytes of data daily. Improved processing time, -300\% on memory usage, -125\% on computation power, simpler code, and replaced old Scala codebase with Python.
         Developed a highly optimized C\# code that transforms data for realtime inference. Reduced overall prediction time by 3\%.
     }
     \newsectionspace
-    \experience{Apr 2020}{Aug 2020}{Zenly}{Software Engineer, Android}{Paris}{
+    \experience{Apr 2020}{Aug 2020}{Zenly}{Software Engineer, Android}{Paris, FR}{
         Developed a highly customizable and optimized graphical library on Android allowing to draw, animate, write text and play GIFs, on top of images and videos, including an undo/redo framework, with a focus on memory management. Improved H264 encoding settings.
     }
     \newsectionspace
-    \experience{Jun 2019}{Sep 2019}{Twitter}{Software Engineer, IOS}{London}{
+    \experience{Jun 2019}{Sep 2019}{Twitter}{Software Engineer, IOS}{London, UK}{
         Worked with Media Client Infrastructure team. Improved video quality on high speed networks by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an increase in ads revenue by +0.56\%, \# of retweets by +0.74\%, \# of likes by +0.25\%.
     }
     \newsectionspace
-    \experience{Dec 2018}{Feb 2019}{RandomCoffee}{Software Engineer, Backend}{Paris}{
+    \experience{Dec 2018}{Feb 2019}{RandomCoffee}{Software Engineer, Backend}{Paris, FR}{
         \link{https://www.random-coffee.com}{RandomCoffee} get employees in a company to meet each other based on their preferences. Generalized the way of expressing matching rules.
         Developed a matching algorithm (derived version of K-Medoid) that can match any number of people together instead of only 2 previously, given a set of constraints.
     }
     \newsectionspace
-    \experience{Jan 2018}{Feb 2018}{Tribe}{Software Engineer, Machine Learning}{Los Angeles}{
+    \experience{Jan 2018}{Feb 2018}{Tribe}{Software Engineer, Machine Learning}{Los Angeles, CA}{
         Tribe is a live multiplayer gaming platform that raised \$6.5M from Sequoia Capital, Kleiner Perkins, and others. Developed a mobile embedded machine learning model able to recognize hand gestures.
     }
 
     \newsection{Notable Projects}
     \newsectionspace
     \project{2023}{Programming language}{
-        A project that I particularily liked is the creation of my own programming language from scratch. Despite the funky name I gave it, the Banana language has a scanner, parser, compiler, and a virtual machine. It's all there. \link{https://github.com/omaraflak/banana}{Banana programming language}.
+        A programming language developed from scratch in C++. Despite the funky name I gave it, the \link{https://github.com/omaraflak/banana}{Banana programming language} has a scanner, parser, compiler, and a virtual machine.
     }
     \newsectionspace
     \project{2023}{Machine Learning Library}{
@@ -157,34 +159,34 @@
     }
     \newsectionspace
     \project{2020}{King Of Ether}{
-        King of Ether is an existing game that I reimplemented on the blockhain of Ethereum using Solidity smart contracts. The game is a Ponzi scheme in itself. To start the game, a player has to send ETH to the contract and becomes the so called king. Then, every person that wants to claim the throne must send 30\% more ETH to the contract and will become the new king. When that happens, the ETH of the new king are transfered to the account of the old king. And so on... If nobody claims the throne for 7 days in a row, the game ends, and the current king is dethroned by some mystical power... \link{https://kingofether.github.io}{https://kingofether.github.io}.
+        King of Ether is an existing game that I reimplemented on the blockhain of Ethereum using Solidity smart contracts. The game is a Ponzi scheme in itself. To start the game, a player has to send ETH to the contract and becomes the so called "king". Then, every person that wants to claim the throne must send 30\% more ETH to the contract and will become the new king. When this happens, the ETH of the new king are transfered to the account of the old king. And so on... If nobody claims the throne for 7 days in a row, the game ends, and the current king is dethroned and loses his ETH... \link{https://kingofether.github.io}{https://kingofether.github.io}.
     }
     \newsectionspace
     \project{2019}{Leaf}{
-        Leaf is a device with radio capabilities that can be plugged directly in a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to \textbf{3 km} between each node) without any internet connection. This personal project was a proof of concept to demonstrate possible alternatives for private decentralized communications. \link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project — Natural disaster communication system}.
+        Leaf is a device with radio capabilities that can be plugged directly into a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to \textbf{3 km} between each node, and by jumping through nodes for longer distances) without any internet connection. This personal project was a proof of concept to demonstrate possible alternatives for private decentralized communications. \link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project — Natural disaster communication system}.
     }
     \newsectionspace
     \project{2018}{Machine Learning Library from scratch}{
-        Four years ago, I decided to learn AI and more specifically neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work both mathematically and programmatically. I developed a machine learning library akin Keras \link{https://github.com/omaraflak/my-neural-nets}{on GitHub}. I wrote an article \link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{on Medium} that got published in \textbf{\textit{Towards Data Science}}, and gave a talk/lesson within the organization \textbf{\textit{School Of AI}} in Paris.
+        In 2017, I decided to learn AI and more specifically the in-and-out of neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work, both mathematically and programmatically. I developed a machine learning library akin Keras \link{https://github.com/omaraflak/my-neural-nets}{on GitHub}. I wrote an article \link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{on Medium} that got published in \textbf{\textit{Towards Data Science}}, and gave a talk/lesson within the organization \textbf{\textit{School Of AI}} in Paris.
     }
 
     \newsection{Awards}
     \newsectionspace
-    \award{May 2016}{Engineering Olympiad}{Schneider Electric}{Paris}{
+    \award{May 2016}{Engineering Olympiad}{Schneider Electric}{Paris, FR}{
         \textit{\textquotedblleft Best Scientific Innovation\textquotedblright} award. \textbf{6th national} place, \textbf{2nd regional} place. Arrow impact prediction system.
     }
     \newsectionspace
-    \award{May 2015}{Engineering Olympiad}{GRDF}{Paris}{
+    \award{May 2015}{Engineering Olympiad}{GRDF}{Paris, FR}{
         \textbf{3rd regional} place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder).
     }
 
     \newsection{Education}
     \newsectionspace
-    \education{Sept 2017}{June 2021}{École Centrale d'Électronique de Paris}{Paris}
+    \education{Sept 2017}{June 2021}{École Centrale d'Électronique de Paris}{Paris, FR}
     \newsectionspace
-    \education{Sept 2018}{Dec 2018}{INSEEC}{London}
+    \education{Sept 2018}{Dec 2018}{INSEEC}{London, UK}
     \newsectionspace
-    \education{Sept 2016}{Jul 2017}{Institut Supérieur d'Electronique de Paris}{Paris}
+    \education{Sept 2016}{Jul 2017}{Institut Supérieur d'Electronique de Paris}{Paris, FR}
 
     \newsection{Languages}
     \begin{minipage}[t]{\linegoal}
