@@ -106,8 +106,8 @@
     \newsection{Links}
     \begingroup
         \begin{minipage}[t]{\linegoal}
+            \footnotesize{\link{https://omaraflak.com}{omaraflak.com}} \\
             \footnotesize{\link{https://github.com/omaraflak}{github.com/omaraflak}} \\
-            \footnotesize{\link{https://medium.com/@omaraflak}{medium.com/@omaraflak}} \\
             \footnotesize{\link{https://www.youtube.com/@independentcode}{youtube.com/@independentcode}} \\
         \end{minipage}
     \endgroup
@@ -116,8 +116,10 @@
     \newsectionspace
     \experience{Dec 2021}{\textit{present}}{Google}{Software Engineer}{London, UK}{
         \begin{itemize}
-            \item Building Gemini-based AI agents that interact with devices through UI to complete a given task. Finetuned custom models to resolve referring expressions into bounding boxes on screen. Built evaluation pipelines for agents.
+            \item MCP servers integration for Gemini in Play Console.
+            \item Built experimental Gemini-based AI agents that interact with Android devices through UI to complete a given task. Finetuned custom models to resolve referring expressions into bounding boxes on screen. Built evaluation pipelines for monitoring agent progress. Wrote injection code for adding agent to any Android application with no developer intervention.
             \item Prototyped and wrote designs for a RAG pipeline to index app contents. Project raised \$30M and aims at indexing 1B app pages/day. Allocated engineers on project.
+            \item Leading engineering effort for injecting code in Android AppBundles — notably for the Gaming Platform project where we inject a full Gemini conversational agent into Android games. Distributing tasks to 1-2 eng, coordinating with design, product, and eng. Owning experimentation stack.
             \item Designed and implemented end-to-end patching feature for Android Deep Links, involving: modifications in GmsCore, implementation of a storage solution, development of data pipelines, creation of APIs, and the design of a web UI in Play Console.
             \item Launched the \link{https://play.google.com/console/about/deeplinks}{Deep Links} page in Play Console. Developed several critical, time sensitive data pipelines responsible for processing data coming from 1.4B Android devices daily. Project led to the fix of ~20\% of App Links domains. Increased a stream of revenue by \$xxM.
         \end{itemize}
@@ -147,8 +149,16 @@
 
     \newsection{Notable Projects}
     \newsectionspace
-    \project{2024}{CUDA Tensor library}{
-        A tensor library developed from scratch, with a module for training neural networks. Tensor operations run in C or CUDA. The library has Python bindings for ease of use: \link{https://github.com/omaraflak/pynn}{Pynn}.
+    \project{2025}{Wormhole Simulation}{
+        \link{https://omaraflak.com/articles/wormhole}{Wormhole} simulation by ray tracing light particles in curved spacetime, i.e. General Relativity.
+    }
+    \newsectionspace
+    \project{2025}{Mask Based Attention}{
+        \link{https://github.com/omaraflak/mask-based-attention}{Mask-based Attention} is a research idea I explored, whose goal is to detect the "useful" parts of an input for a given prediction task. Where "useful" is defined as "what can't be removed so that the prediction is still accurate". This leads to the idea of learning a model that predicts masks over the input.
+    }
+    \newsectionspace
+    \project{2025}{CUDA Tensor library}{
+        \link{https://github.com/omaraflak/pynn}{Pynn} is toy tensor library developed from scratch, with a module for training neural networks. Tensor operations run in C or within CUDA kernels. The library has Python bindings for ease of use.
     }
     \newsectionspace
     \project{2023}{Programming language}{
