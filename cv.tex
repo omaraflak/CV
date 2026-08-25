@@ -1,212 +1,378 @@
-\documentclass[11pt, a4paper]{article}
-\usepackage[left=0.6in,top=0.4in,right=0.6in,bottom=0.4in]{geometry}
-\usepackage[parfill]{parskip}
-\usepackage[hidelinks]{hyperref}
-\usepackage{array}
-\usepackage{contour}
-\usepackage{enumitem}
-\usepackage{fontspec}
-\usepackage{linegoal}
-\usepackage{setspace}
-\usepackage{ulem}
-\usepackage{xcolor}
+% =====================================================================
+%  Curriculum Vitae — Michel Omar Aflak
+%
+%  Build:   xelatex cv.tex        (one pass is enough)
+%  Needs:   texlive-xetex + texlive-latex-extra
+%  Fonts:   bundled in ./fonts, loaded by path — nothing to install.
+%           Falls back to EB Garamond / TeX Gyre Pagella if missing.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
 
+% ---------------------------------------------------------------------
+%  Page setup
+% ---------------------------------------------------------------------
+\usepackage[left=0.6in,right=0.6in,top=0.4in,bottom=0.45in]{geometry}
 \pagestyle{empty}
-\setmainfont{Garamond Classico}
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\hyphenpenalty=500
+
+% ---------------------------------------------------------------------
+%  Packages
+% ---------------------------------------------------------------------
+\usepackage{fontspec}
+\usepackage{microtype}      % subtler justification, fewer overfull lines
+\usepackage{contour}        % white halo, lets underlines skip descenders
+\usepackage{enumitem}
+\usepackage{needspace}      % stops a heading stranding at the foot of a page
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+  pdftitle   = {Michel Omar Aflak — Curriculum Vitae},
+  pdfauthor  = {Michel Omar Aflak},
+  pdfcreator = {XeLaTeX},
+}
+
+% ---------------------------------------------------------------------
+%  Fonts — try bundled, then installed, then a sane substitute
+% ---------------------------------------------------------------------
+\IfFontExistsTF{fonts/Garamond Classico Regular.ttf}{
+  \setmainfont{Garamond Classico}[
+    Path           = fonts/,
+    Extension      = .ttf,
+    UprightFont    = * Regular,
+    BoldFont       = * Bold,
+    ItalicFont     = * Italic,
+    BoldItalicFont = * BoldItalic,
+    Ligatures      = TeX,
+  ]
+}{
+  \IfFontExistsTF{Garamond Classico}{
+    \setmainfont{Garamond Classico}[Ligatures=TeX]
+  }{
+    \IfFontExistsTF{EB Garamond}{
+      \setmainfont{EB Garamond}[Ligatures=TeX]
+    }{
+      \setmainfont{TeX Gyre Pagella}[Ligatures=TeX]
+      \PackageWarningNoLine{cv}{Garamond not found - falling back to TeX Gyre Pagella}
+    }
+  }
+}
+
+% ---------------------------------------------------------------------
+%  Design tokens — every dimension in the document lives here
+% ---------------------------------------------------------------------
+\newlength{\cvsidebar}    \setlength{\cvsidebar}{110pt}    % date column
+\newlength{\cvgutter}     \setlength{\cvgutter}{14pt}      % column gap
+\newlength{\cvbodywidth}  % derived; never set this by hand
+\setlength{\cvbodywidth}{\dimexpr\textwidth-\cvsidebar-\cvgutter\relax}
+
+\newlength{\cventrysep}   \setlength{\cventrysep}{0.40em}  % between entries
+\newlength{\cvsectionsep} \setlength{\cvsectionsep}{0.65em}% above a rule
+\newlength{\cvlabelsep}   \setlength{\cvlabelsep}{0.4em}  % rule to label
+\newlength{\cvheadsep}    \setlength{\cvheadsep}{0.1em}    % title to body
+\newlength{\cvparsep}     \setlength{\cvparsep}{0.22em}    % between paragraphs
+
+\newlength{\cvrulewidth}  \setlength{\cvrulewidth}{0.9pt}
+\newlength{\cvulinedepth} \setlength{\cvulinedepth}{1.8pt}
+\newlength{\cvulinewidth} \setlength{\cvulinewidth}{0.5pt}
+
+
+\definecolor{cvrule}{gray}{0.15}
+\definecolor{cvmuted}{gray}{0.35}
+
+\newcommand{\cvsectionfont}{\footnotesize\addfontfeature{LetterSpace=12}}
+\newcommand{\cvdatefont}{\footnotesize\color{cvmuted}}
+\newcommand{\cvtitlefont}{\normalsize\bfseries}
+\newcommand{\cvmetafont}{\footnotesize\color{cvmuted}}
+\newcommand{\cvbodyfont}{\footnotesize}
+
 \contourlength{0.8pt}
 
-\renewcommand{\ULdepth}{1.8pt}
+% ---------------------------------------------------------------------
+%  Underlined links.  The rule is drawn first and the text painted over
+%  it with a white halo, so descenders punch through the line.
+%  Self-contained: no ulem, no soul.  Link text must not need to wrap.
+% ---------------------------------------------------------------------
+\newcommand{\cvuline}[1]{%
+  \begingroup
+    \sbox0{#1}%
+    \rlap{\raisebox{-\cvulinedepth}{\rule{\wd0}{\cvulinewidth}}}%
+    \contour{white}{#1}%
+  \endgroup
+}
+\newcommand{\link}[2]{\href{#1}{\cvuline{#2}}}
 
-\newcommand{\firstcolwidth}{120pt}
-\newcommand{\capitalletterspacing}{10}
-\newcommand{\spaceaftersection}{1em}
-\newcommand{\spaceaftername}{0.5em}
-\newcommand{\myuline}[1]{%
-  \uline{\phantom{#1}}%
-  \llap{\contour{white}{#1}}%
-}
-\newcommand{\drawline}{\leavevmode\leaders\hrule height 1pt\hfill\kern 0pt}
-\newcommand{\link}[2]{\myuline{\textcolor{black}{\href{#1}{#2}}}}
-\newcommand{\newsection}[1]{
-    \drawline
-    \break
-    \begin{minipage}[t]{\firstcolwidth}
-        \addfontfeature{LetterSpace=\capitalletterspacing}
-        \footnotesize{\MakeUppercase{#1}}
-        \addfontfeature{LetterSpace=0}
-    \end{minipage}
-}
-\newcommand{\newsectionspace}{
-    \begin{minipage}[t]{\linegoal}
-        \hfill
-        \vspace{\spaceaftersection}
-    \end{minipage}
-}
-\newcommand{\experience}[6]{
-    \begin{minipage}[t]{\firstcolwidth}
-        \footnotesize{#1 \textemdash\ #2}
-    \end{minipage}
-    \begin{minipage}[t]{\linegoal}
-        \textbf{\normalsize{#3 \textemdash\ #4}}
-        \hfill
-        \footnotesize{#5}
-        \begin{singlespace}
-            \begin{flushleft}
-                \footnotesize{#6}
-            \end{flushleft}
-        \end{singlespace}
-    \end{minipage}
-}
-\newcommand{\project}[3]{
-    \begin{minipage}[t]{\firstcolwidth}
-        \footnotesize{#1}
-    \end{minipage}
-    \begin{minipage}[t]{\linegoal}
-        \textbf{\normalsize{#2}}
-        \begin{singlespace}
-            \begin{flushleft}
-                \footnotesize{#3}
-            \end{flushleft}
-        \end{singlespace}
-    \end{minipage}
-}
-\newcommand{\award}[5]{
-    \begin{minipage}[t]{\firstcolwidth}
-        \footnotesize{#1}
-    \end{minipage}
-    \begin{minipage}[t]{\linegoal}
-        \textbf{\normalsize{#2, #3}}
-        \hfill
-        \footnotesize{#4}
-        \begin{singlespace}
-            \begin{flushleft}
-                \footnotesize{#5}
-            \end{flushleft}
-        \end{singlespace}
-    \end{minipage}
-}
-\newcommand{\education}[4]{
-    \begin{minipage}[t]{\firstcolwidth}
-        \footnotesize{#1 \textemdash\ #2}
-    \end{minipage}
-    \begin{minipage}[t]{\linegoal}
-        \textbf{\normalsize{#3}}
-        \hfill
-        \footnotesize{#4}
-    \end{minipage}
+% ---------------------------------------------------------------------
+%  Section heading: full-width rule, then a letterspaced label sitting
+%  in the sidebar column.  Optional argument sets content beside it.
+% ---------------------------------------------------------------------
+\NewDocumentCommand{\cvsection}{m o}{%
+  \par\addvspace{\cvsectionsep}%
+  % Keep the heading with what follows.  An inline section (optional arg)
+  % is self-contained and only needs room for itself; a section that opens
+  % a list needs room for its first entry too.
+  \IfValueTF{#2}{\Needspace*{1.5\baselineskip}}{\Needspace*{5\baselineskip}}%
+  \noindent{\color{cvrule}\rule{\textwidth}{\cvrulewidth}}%
+  \par\nobreak\vspace{\cvlabelsep}\nobreak
+  \noindent
+  \begin{minipage}[t]{\cvsidebar}\raggedright\cvsectionfont\MakeUppercase{#1}\end{minipage}%
+  \hspace{\cvgutter}%
+  \begin{minipage}[t]{\cvbodywidth}\raggedright\cvbodyfont\IfValueT{#2}{#2}\end{minipage}%
+  \par\addvspace{\cventrysep}%
 }
 
+% ---------------------------------------------------------------------
+%  Entry list.  Built on `list` rather than paired minipages so a long
+%  entry can break across pages instead of overflowing the margin.
+%  The date lives in the label box; body text flows normally after it.
+% ---------------------------------------------------------------------
+\newcommand{\cvgobble}[1]{}
+
+\newenvironment{cventries}{%
+  \begin{list}{}{%
+    \setlength{\labelwidth}{0pt}%
+    \setlength{\labelsep}{0pt}%
+    \setlength{\leftmargin}{\dimexpr\cvsidebar+\cvgutter\relax}%
+    \setlength{\rightmargin}{0pt}%
+    \setlength{\itemindent}{0pt}%
+    \setlength{\listparindent}{0pt}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\parsep}{\cvparsep}%
+    \setlength{\itemsep}{\cventrysep}%
+    \let\makelabel\cvgobble
+  }%
+  \cvbodyfont\raggedright
+}{%
+  \end{list}%
+}
+
+% \cventry{dates}{title}[right-aligned meta]
+%   followed by free-form body text until the next \cventry.
+%
+%   The date is set in a zero-width box flushed right into the margin, on
+%   the same line as the title.  That pins it to the title's own baseline
+%   — a \parbox in the list's label slot drifts when the title and the
+%   body are different sizes.
+\NewDocumentCommand{\cventry}{m m o}{%
+  \item[]\nobreak
+  \makebox[0pt][r]{%
+    % Font and colour are applied OUTSIDE the parbox.  \color inserts a
+    % whatsit node, and a whatsit as the first item of \parbox[t]'s \vtop
+    % breaks its baseline reference: the date drops by one cap height.
+    {\cvdatefont\parbox[t]{\cvsidebar}{\raggedright #1}}%
+    \hspace{\cvgutter}%
+  }%
+  {\cvtitlefont #2}%
+  \IfValueT{#3}{\hfill{\cvmetafont #3}}%
+  \par\nobreak\addvspace{\cvheadsep}\nobreak
+}
+
+% ---------------------------------------------------------------------
+%  Bullet lists inside entries
+% ---------------------------------------------------------------------
+\setlist[itemize]{
+  leftmargin = 1.1em,
+  labelsep   = 0.45em,
+  topsep     = 0.15em,
+  itemsep    = 0.3em,
+  parsep     = 0pt,
+  label      = \textbullet,
+}
+
+% ---------------------------------------------------------------------
+%  Masthead
+% ---------------------------------------------------------------------
+\newcommand{\cvsep}{\quad\textperiodcentered\quad}
+
+\newcommand{\cvname}[2]{%
+  \begin{center}
+    {\Large\bfseries\addfontfeature{LetterSpace=4}#1}\\[0.55em]
+    {\footnotesize #2}
+  \end{center}
+  \vspace{-0.6em}%
+}
+
+% =====================================================================
 \begin{document}
-    \begin{center}
-        \Large{\textbf{Michel Omar Aflak}} \\
-        \vspace{\spaceaftername}
-        \footnotesize{(+33)630924591, aflakomar@gmail.com}
-    \end{center}
 
-    \newsection{Links}
-    \begingroup
-        \begin{minipage}[t]{\linegoal}
-            \footnotesize{\link{https://omaraflak.com}{omaraflak.com}} \\
-            \footnotesize{\link{https://github.com/omaraflak}{github.com/omaraflak}} \\
-            \footnotesize{\link{https://www.youtube.com/@independentcode}{youtube.com/@independentcode}} \\
-        \end{minipage}
-    \endgroup
+\cvname{Michel Omar Aflak}{(+33)~6~30~92~45~91 \cvsep aflakomar@gmail.com}
 
-    \newsection{Experience}
-    \newsectionspace
-    \experience{Dec 2021}{\textit{present}}{Google}{Software Engineer}{London, UK}{
-        \begin{itemize}
-            \item MCP servers integration for Gemini in Play Console.
-            \item Built experimental Gemini-based AI agents that interact with Android devices through UI to complete a given task. Finetuned custom models to resolve referring expressions into bounding boxes on screen. Built evaluation pipelines for monitoring agent progress. Wrote injection code for adding agent to any Android application with no developer intervention.
-            \item Prototyped and wrote designs for a RAG pipeline to index app contents. Project raised \$30M and aims at indexing 1B app pages/day. Allocated engineers on project.
-            \item Leading engineering effort for injecting code in Android AppBundles — notably for the Gaming Platform project where we inject a full Gemini conversational agent into Android games. Distributing tasks to 1-2 eng, coordinating with design, product, and eng. Owning experimentation stack.
-            \item Designed and implemented end-to-end patching feature for Android Deep Links, involving: modifications in GmsCore, implementation of a storage solution, development of data pipelines, creation of APIs, and the design of a web UI in Play Console.
-            \item Launched the \link{https://play.google.com/console/about/deeplinks}{Deep Links} page in Play Console. Developed several critical, time sensitive data pipelines responsible for processing data coming from 1.4B Android devices daily. Project led to the fix of ~20\% of App Links domains. Increased a stream of revenue by \$xxM.
-        \end{itemize}
-    }
-    \newsectionspace
-    \experience{Feb 2021}{Aug 2021}{Criteo}{Software Engineer}{Paris, FR}{
-        Redesigned from scratch, in PySpark, the pipeline that prepares data for training Criteo's machine learning models for Ads. The pipeline handles multi-terabytes of data daily. Improved processing time, -300\% on memory usage, -125\% on computation power, simpler code, and replaced old Scala codebase with Python.
-        Developed a highly optimized C\# code that transforms data for realtime inference. Reduced overall prediction time by 3\%.
-    }
-    \newsectionspace
-    \experience{Apr 2020}{Aug 2020}{Zenly}{Software Engineer}{Paris, FR}{
-        Developed a highly customizable and optimized graphical library on Android allowing to draw, animate, write text and play GIFs, on top of images and videos, including an undo/redo framework, with a focus on memory management. Improved H264 encoding settings.
-    }
-    \newsectionspace
-    \experience{Jun 2019}{Sep 2019}{Twitter}{Software Engineer}{London, UK}{
-        Worked with Media Client Infrastructure team. Improved video quality on high speed networks by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an increase in ads revenue by +0.56\%, \# of retweets by +0.74\%, \# of likes by +0.25\%.
-    }
-    \newsectionspace
-    \experience{Dec 2018}{Feb 2019}{RandomCoffee}{Software Engineer}{Paris, FR}{
-        \link{https://www.random-coffee.com}{RandomCoffee} get employees in a company to meet each other based on their preferences. Generalized the way of expressing matching rules.
-        Developed a matching algorithm (derived version of K-Medoid) that can match any number of people together instead of only 2 previously, given a set of constraints.
-    }
-    \newsectionspace
-    \experience{Jan 2018}{Feb 2018}{Tribe}{Software Engineer}{Los Angeles, CA}{
-        Trained a neural network model, embedded on-device, able to recognize hand gestures on images. Tribe is a live multiplayer gaming platform that raised \$6.5M from Sequoia Capital, Kleiner Perkins, and others.
-    }
+% ---------------------------------------------------------------------
+\cvsection{Links}[
+  \link{https://omaraflak.com}{omaraflak.com} \cvsep
+  \link{https://github.com/omaraflak}{github.com/omaraflak} \cvsep
+  \link{https://www.youtube.com/@independentcode}{youtube.com/@independentcode}
+]
 
-    \newsection{Notable Projects}
-    \newsectionspace
-    \project{2025}{Wormhole Simulation}{
-        \link{https://omaraflak.com/articles/wormhole}{Wormhole} simulation by ray tracing light particles in curved spacetime, i.e. General Relativity.
-    }
-    \newsectionspace
-    \project{2025}{Mask Based Attention}{
-        \link{https://github.com/omaraflak/mask-based-attention}{Mask-based Attention} is a research idea I explored, whose goal is to detect the "useful" parts of an input for a given prediction task. Where "useful" is defined as "what can't be removed so that the prediction is still accurate". This leads to the idea of learning a model that predicts masks over the input.
-    }
-    \newsectionspace
-    \project{2025}{CUDA Tensor library}{
-        \link{https://github.com/omaraflak/pynn}{Pynn} is toy tensor library developed from scratch, with a module for training neural networks. Tensor operations run in C or within CUDA kernels. The library has Python bindings for ease of use.
-    }
-    \newsectionspace
-    \project{2023}{Programming language}{
-        A programming language developed from scratch in C++. Despite the funky name I gave it, the \link{https://github.com/omaraflak/banana}{Banana programming language} has a scanner, parser, compiler, and a virtual machine.
-    }
-    \newsectionspace
-    \project{2022}{EIP-4671: Non-Tradable Tokens}{
-        \link{https://eips.ethereum.org/EIPS/eip-4671}{EIP-4671} is protocol I designed for Non-Tradable Tokens on the Ethereum blockhain.
-    }
-    \newsectionspace
-    \project{2021}{YouTube Channel}{
-        After writing articles for many years, I decided to change my medium of expression. I started a YouTube channel February 2021 where I program mathematical concepts, such as neural networks, from scratch. \link{https://www.youtube.com/channel/UC1OLIHvAKBQy3o5LcbbxUSg}{The Independent Code}.
-    }
-    \newsectionspace
-    \project{2020}{King Of Ether}{
-        King of Ether is an existing game that I reimplemented on the blockhain of Ethereum using Solidity smart contracts. The game is a Ponzi scheme in itself. To start the game, a player has to send ETH to the contract and becomes the so called "king". Then, every person that wants to claim the throne must send 30\% more ETH to the contract and will become the new king. When this happens, the ETH of the new king are transfered to the account of the old king. And so on... If nobody claims the throne for 7 days in a row, the game ends, and the current king is dethroned and loses his ETH... \link{https://kingofether.github.io}{https://kingofether.github.io}.
-    }
-    \newsectionspace
-    \project{2019}{Leaf}{
-        Leaf is a device with radio capabilities that can be plugged directly into a smartphone. People using Leaf form a \textbf{mesh network} that allows them to communicate over long distances (up to \textbf{3 km} between each node, and by jumping through nodes for longer distances) without any internet connection. This personal project was a proof of concept to demonstrate possible alternatives for private decentralized communications. \link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project — Natural disaster communication system}.
-    }
-    \newsectionspace
-    \project{2018}{Machine Learning Library from scratch}{
-        In 2017, I decided to learn AI and more specifically the in-and-out of neural networks. I taught myself by reading on the internet, and managed to get a strong understanding of how neural networks work, both mathematically and programmatically. I developed a machine learning library akin Keras \link{https://github.com/omaraflak/my-neural-nets}{on GitHub}. I wrote an article \link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{on Medium} that got published in \textbf{\textit{Towards Data Science}}, and gave a talk/lesson within the organization \textbf{\textit{School Of AI}} in Paris.
-    }
+% ---------------------------------------------------------------------
+\cvsection{Experience}
 
-    \newsection{Awards}
-    \newsectionspace
-    \award{May 2016}{Engineering Olympiad}{Schneider Electric}{Paris, FR}{
-        \textit{\textquotedblleft Best Scientific Innovation\textquotedblright} award. \textbf{6th national} place, \textbf{2nd regional} place. Arrow impact prediction system.
-    }
-    \newsectionspace
-    \award{May 2015}{Engineering Olympiad}{GRDF}{Paris, FR}{
-        \textbf{3rd regional} place, reached national competition. Gyroscopic mouse designed to filter essential tremors (movement disorder).
-    }
+\begin{cventries}
 
-    \newsection{Education}
-    \newsectionspace
-    \education{Sept 2017}{June 2021}{École Centrale d'Électronique de Paris}{Paris, FR}
-    \newsectionspace
-    \education{Sept 2018}{Dec 2018}{INSEEC}{London, UK}
-    \newsectionspace
-    \education{Sept 2016}{Jul 2017}{Institut Supérieur d'Electronique de Paris}{Paris, FR}
+\cventry{Feb 2026 — \textit{present}}{DeepMind — Software Engineer}[London, UK]
+\begin{itemize}
+  \item Knowledge graph memory for LLMs.
+  \item Agentic markets simulation at scale.
+  \item TPU duty cycle optimization.
+\end{itemize}
 
-    \newsection{Languages}
-    \begin{minipage}[t]{\linegoal}
-        \small{\textbf{English}}: Fluent \qquad
-        \small{\textbf{French}}: Native \qquad
-        \small{\textbf{Arabic}}: Native
-    \end{minipage}
+\cventry{Dec 2021 — Feb 2026}{Google — Software Engineer}[London, UK]
+\begin{itemize}
+  \item MCP servers integration for Gemini in Play Console.
+  \item Built experimental Gemini-based AI agents that interact with Android devices
+        through UI to complete a given task. Finetuned custom models to resolve referring
+        expressions into bounding boxes on screen. Built evaluation pipelines for
+        monitoring agent progress. Wrote injection code for adding agent to any Android
+        application with no developer intervention.
+  \item Prototyped and wrote designs for a RAG pipeline to index app contents. Project
+        raised \$30M and aims at indexing 1B app pages/day. Allocated engineers on project.
+  \item Leading engineering effort for injecting code in Android AppBundles — notably for
+        the Gaming Platform project where we inject a full Gemini conversational agent into
+        Android games. Distributing tasks to 1--2 eng, coordinating with design, product,
+        and eng. Owning experimentation stack.
+  \item Designed and implemented end-to-end patching feature for Android Deep Links,
+        involving: modifications in GmsCore, implementation of a storage solution,
+        development of data pipelines, creation of APIs, and the design of a web UI in
+        Play Console.
+  \item Launched the \link{https://play.google.com/console/about/deeplinks}{Deep Links}
+        page in Play Console. Developed several critical, time sensitive data pipelines
+        responsible for processing data coming from 1.4B Android devices daily. Project
+        led to the fix of about 20\% of App Links domains. Increased a stream of revenue
+        by \$xxM.
+\end{itemize}
+
+\cventry{Feb 2021 — Aug 2021}{Criteo — Software Engineer}[Paris, FR]
+Redesigned from scratch, in PySpark, the pipeline that prepares data for training Criteo's
+machine learning models for Ads. The pipeline handles multi-terabytes of data daily.
+Improved processing time, $-300\%$ on memory usage, $-125\%$ on computation power, simpler
+code, and replaced old Scala codebase with Python.
+
+Developed a highly optimized C\# code that transforms data for realtime inference. Reduced
+overall prediction time by 3\%.
+
+\cventry{Apr 2020 — Aug 2020}{Zenly — Software Engineer}[Paris, FR]
+Developed a highly customizable and optimized graphical library on Android allowing to
+draw, animate, write text and play GIFs, on top of images and videos, including an
+undo/redo framework, with a focus on memory management. Improved H264 encoding settings.
+
+\cventry{Jun 2019 — Sep 2019}{Twitter — Software Engineer}[London, UK]
+Worked with Media Client Infrastructure team. Improved video quality on high speed networks
+by developing a bitrate prediction model, mobile side. A/B tested on 6M users, observed an
+increase in ads revenue by $+0.56\%$, \# of retweets by $+0.74\%$, \# of likes by $+0.25\%$.
+
+\cventry{Dec 2018 — Feb 2019}{RandomCoffee — Software Engineer}[Paris, FR]
+\link{https://www.random-coffee.com}{RandomCoffee} gets employees in a company to meet each
+other based on their preferences. Generalized the way of expressing matching rules.
+Developed a matching algorithm (derived version of K-Medoid) that can match any number of
+people together instead of only 2 previously, given a set of constraints.
+
+\cventry{Jan 2018 — Feb 2018}{Tribe — Software Engineer}[Los Angeles, CA]
+Trained a neural network model, embedded on-device, able to recognize hand gestures on
+images. Tribe is a live multiplayer gaming platform that raised \$6.5M from Sequoia Capital,
+Kleiner Perkins, and others.
+
+\end{cventries}
+
+% ---------------------------------------------------------------------
+\cvsection{Notable Projects}
+
+\begin{cventries}
+
+\cventry{2026}{Building a Computer from NAND}
+\link{https://notboth.dev}{notboth.dev} builds a working computer up from a single NAND
+gate — logic gates, arithmetic, memory, and a CPU — one layer at a time.
+
+\cventry{2025}{Wormhole Simulation}
+\link{https://omaraflak.com/articles/wormhole}{Wormhole} simulation by ray tracing light
+particles in curved spacetime, i.e.\ General Relativity.
+
+\cventry{2025}{Mask Based Attention}
+\link{https://github.com/omaraflak/mask-based-attention}{Mask-based Attention} is a research
+idea I explored, whose goal is to detect the ``useful'' parts of an input for a given
+prediction task, where ``useful'' is defined as ``what can't be removed so that the
+prediction is still accurate''. This leads to the idea of learning a model that predicts
+masks over the input.
+
+\cventry{2025}{CUDA Tensor Library}
+\link{https://github.com/omaraflak/pynn}{Pynn} is a toy tensor library developed from
+scratch, with a module for training neural networks. Tensor operations run in C or within
+CUDA kernels. The library has Python bindings for ease of use.
+
+\cventry{2023}{Programming Language}
+A programming language developed from scratch in C++. Despite the funky name I gave it, the
+\link{https://github.com/omaraflak/banana}{Banana programming language} has a scanner,
+parser, compiler, and a virtual machine.
+
+\cventry{2022}{EIP-4671: Non-Tradable Tokens}
+\link{https://eips.ethereum.org/EIPS/eip-4671}{EIP-4671} is a protocol I designed for
+Non-Tradable Tokens on the Ethereum blockchain.
+
+\cventry{2021}{YouTube Channel}
+After writing articles for many years, I decided to change my medium of expression. I
+started a YouTube channel in February 2021 where I program mathematical concepts, such as
+neural networks, from scratch:
+\link{https://www.youtube.com/@independentcode}{The Independent Code}.
+
+\cventry{2020}{King of Ether}
+\link{https://kingofether.github.io}{King of Ether} is an existing game that I reimplemented
+on the Ethereum blockchain using Solidity smart contracts — the game is a Ponzi scheme in
+itself. A player sends ETH to the contract to become the ``king''; anyone who wants the
+throne must send 30\% more ETH, and the previous king is paid out. If nobody claims the
+throne for 7 days, the game ends and the current king loses his ETH.
+
+\cventry{2019}{Leaf}
+Leaf is a device with radio capabilities that can be plugged directly into a smartphone.
+People using Leaf form a \textbf{mesh network} that allows them to communicate over long
+distances (up to \textbf{3~km} between each node, and by jumping through nodes for longer
+distances) without any internet connection. This personal project was a proof of concept to
+demonstrate possible alternatives for private decentralized communications:
+\link{https://medium.com/@martin.marvin/leaf-project-natural-disaster-communication-system-1d73e8eaa7b8}{Leaf Project}.
+
+\cventry{2018}{Machine Learning Library from Scratch}
+In 2017, I decided to learn AI and more specifically the in-and-out of neural networks. I
+taught myself by reading on the internet, and managed to get a strong understanding of how
+neural networks work, both mathematically and programmatically. I developed a machine
+learning library akin to Keras \link{https://github.com/omaraflak/my-neural-nets}{on
+GitHub}. I wrote an article
+\link{https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65?source=friends_link&sk=2776d172d7666cc74c6b0ed292a91b0b}{on
+Medium} that got published in \textit{Towards Data Science}, and gave a talk within the
+organization \textit{School of AI} in Paris.
+
+\end{cventries}
+
+% ---------------------------------------------------------------------
+\cvsection{Awards}
+
+\begin{cventries}
+
+\cventry{May 2016}{Engineering Olympiad, Schneider Electric}[Paris, FR]
+\textit{``Best Scientific Innovation''} award. \textbf{6th national} place,
+\textbf{2nd regional} place. Arrow impact prediction system.
+
+\cventry{May 2015}{Engineering Olympiad, GRDF}[Paris, FR]
+\textbf{3rd regional} place, reached national competition. Gyroscopic mouse designed to
+filter essential tremors (movement disorder).
+
+\end{cventries}
+
+% ---------------------------------------------------------------------
+\cvsection{Education}
+
+\begin{cventries}
+\cventry{Sept 2017 — June 2021}{École Centrale d'Électronique de Paris}[Paris, FR]
+\cventry{Sept 2018 — Dec 2018}{INSEEC}[London, UK]
+\cventry{Sept 2016 — Jul 2017}{Institut Supérieur d'Électronique de Paris}[Paris, FR]
+\end{cventries}
+
+% ---------------------------------------------------------------------
+\cvsection{Languages}[
+  \textbf{English}: Fluent \cvsep
+  \textbf{French}: Native \cvsep
+  \textbf{Arabic}: Native
+]
+
 \end{document}
